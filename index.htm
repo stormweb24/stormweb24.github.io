@@ -127,6 +127,7 @@ Contacts: likkkhov@yandex.ru
 			function __initFirebase(){
 				if(!__ststusFirebase){
 					$.getScript('/assets/js/firebase.js', function(data, textStatus, jqxhr){
+						console.log('initFirebase!');
 						__ststusFirebase = true;
 					});
 				}
@@ -268,6 +269,7 @@ Contacts: likkkhov@yandex.ru
 				
 				$(__body).on('click', '.action__open-feedback', function(){
 					__initScrollPane();
+					__initFirebase();
 					__page.addClass('page__action-closed');
 					__page.addClass('page__hm-hide-no-amination');
 					__page.addClass('page__footer-go-back');
