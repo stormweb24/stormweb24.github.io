@@ -290,14 +290,14 @@ Contacts: likkkhov@yandex.ru
 						u.dom7LiveListeners || (u.dom7LiveListeners = {}), u.dom7LiveListeners[v] || (u.dom7LiveListeners[v] = []), u.dom7LiveListeners[v].push({
 							listener: n,
 							proxyListener: l
-						}), console.log(o), u.addEventListener(v, l, o)
+						}), u.addEventListener(v, l, o)
 					} else
 						for (h = 0; h < p.length; h += 1) {
 							var f = p[h];
 							u.dom7Listeners || (u.dom7Listeners = {}), u.dom7Listeners[f] || (u.dom7Listeners[f] = []), u.dom7Listeners[f].push({
 								listener: n,
 								proxyListener: d
-							}), u.addEventListener(f, d, o)
+							}), console.log(o),u.addEventListener(f, d, o)
 						}
 			}
 			return this
