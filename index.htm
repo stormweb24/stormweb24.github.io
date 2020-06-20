@@ -110,16 +110,24 @@ Contacts: likkkhov@yandex.ru
 		</script>
 		<script>
 		
-			var __statusScrollPane = false;
+			var __statusScrollPane = false,
+				__ststusFirebase = false;
 			
 			function __initScrollPane(){
 				if(!__statusScrollPane){
-					$.getScript('/assets/js/scroll-pane.js', function(data, textStatus, jqxhr){
+					$.getScript('/assets/js/scrollpane.js', function(data, textStatus, jqxhr){
 						$('.scroll-pane').jScrollPane({
 							autoReinitialise: true
 						});
 						console.log('initScrollPane!');
 						__statusScrollPane = true;
+					});
+				}
+			}
+			function __initFirebase(){
+				if(!__ststusFirebase){
+					$.getScript('/assets/js/firebase.js', function(data, textStatus, jqxhr){
+						__ststusFirebase = true;
 					});
 				}
 			}
@@ -280,23 +288,26 @@ Contacts: likkkhov@yandex.ru
 				
 				$(__body).on('submit', '.float-feedback__form form', function(){
 					var __el = $(this);
-					var __formName  = __el.find('input[name=name]').val();
-					var __formPhone = __el.find('input[name=phone]').val();
 					
-					var __formFields = __el.find('input,button');
-						__formFields.attr('disabled', 'disabled');
+					if(__ststusFirebase){
+						var __formName  = __el.find('input[name=name]').val();
+						var __formPhone = __el.find('input[name=phone]').val();
 						
-					firebase.database().ref('feedback').push().set({
-						name: __formName,
-						phone: __formPhone
-					}).then(function(snapshot) {
-						__formFields.removeAttr('disabled');
-					
-						$('.float-feedback__form').hide();
-						$('.float-feedback__success').show();
-					}, function(error) {
-						__formFields.removeAttr('disabled');
-					});
+						var __formFields = __el.find('input,button');
+							__formFields.attr('disabled', 'disabled');
+						
+						firebase.database().ref('feedback').push().set({
+							name: __formName,
+							phone: __formPhone
+						}).then(function(snapshot) {
+							__formFields.removeAttr('disabled');
+						
+							$('.float-feedback__form').hide();
+							$('.float-feedback__success').show();
+						}, function(error) {
+							__formFields.removeAttr('disabled');
+						});
+					}
 					
 					return false;
 				});
