@@ -241,6 +241,8 @@ Contacts: likkkhov@yandex.ru
 				});
 				
 				$(__body).on('click', '.action__toggle-menu', function(){
+				
+					__initScrollPane();
 					__page.toggleClass('page__action-closed');
 					
 					if(__page.hasClass('page__action-closed')){
@@ -257,6 +259,7 @@ Contacts: likkkhov@yandex.ru
 				});
 				
 				$(__body).on('click', '.action__open-feedback', function(){
+					__initScrollPane();
 					__page.addClass('page__action-closed');
 					__page.addClass('page__hm-hide-no-amination');
 					__page.addClass('page__footer-go-back');
