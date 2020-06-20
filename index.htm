@@ -11390,7 +11390,7 @@ return jQuery;
               proxyListener: handleEvent,
             });
 			console.log(capture);
-            el.addEventListener(event, handleEvent, capture);
+            el.addEventListener(event, handleEvent, {passive: true});
           }
         } else {
           // Live events
