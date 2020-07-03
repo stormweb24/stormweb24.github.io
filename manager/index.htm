@@ -20,7 +20,7 @@
 					
 					console.log(childSnapshot.key);
 					console.log(childSnapshot.val());
-					childSnapshot.remove();
+					firebase.database().ref('feedback/'+childSnapshot.key).remove();
 					});
 				  });
 				});
