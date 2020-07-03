@@ -15,7 +15,7 @@
 			
 			$(function(){
 				$.getScript('/assets/js/firebase.js', function(data, textStatus, jqxhr){
-					console.log('initFirebase!');
+					console.log(firebase.database().ref('feedback'));
 					
 				});
 			});
