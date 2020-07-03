@@ -15,8 +15,13 @@
 			
 			$(function(){
 				$.getScript('/assets/js/firebase.js', function(data, textStatus, jqxhr){
-					console.log(firebase.database().ref('feedback'));
+				firebase.database().ref('feedback').once('value',   function(snapshot) {
+					snapshot.forEach(function(childSnapshot) {
 					
+					console.log(childSnapshot.key);
+					console.log(childSnapshot.val());
+					});
+				  });
 				});
 			});
 		</script>
