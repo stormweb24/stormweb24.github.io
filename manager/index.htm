@@ -31,6 +31,22 @@
 			font-style: normal;
 			font-display: swap
 		}
+		
+		@keyframes spin{
+			0%{
+				-webkit-transform: rotate(0deg);
+				-ms-transform: rotate(0deg);
+				-o-transform: rotate(0deg);
+				transform: rotate(0deg);
+			}
+
+			100%{
+				-webkit-transform: rotate(360deg);
+				-ms-transform: rotate(360deg);
+				-o-transform: rotate(360deg);
+				transform: rotate(360deg);
+			}
+		}
 
 		* {
 			box-sizing: border-box;
@@ -49,7 +65,6 @@
 			font-family: 'Gotham Pro';
 			font-weight: 400;
 			color: #212529;
-			overflow: hidden;
 			background-color: #ffffff;
 		}
 
@@ -94,9 +109,13 @@
 		.mpanel__login-content{
 			text-align: center;
 		}
+		.mpanel__login-logo{
+			padding-bottom: 80px;
+		}
 		.mpanel__login-logo a{
 			display: block;
 			max-width: 180px;
+			margin: 0 auto;
 		}
 		
 		.mpanel__login-logo svg{
@@ -105,35 +124,231 @@
 		
 		.mpanel__login-title{
 			font-family: 'Helios Cond Bold';
-			font-size: 26px;
-			line-height: 26px;
+			font-size: 28px;
+			line-height: 28px;
 			text-transform: uppercase;
+			margin-bottom: 10px;
+		}
+		.mpanel__login-subtitle{
+			color: rgba(26,26,26,.8);
+		}
+		
+		.mpanel__login-pin-code{
+			padding-top: 30px;
+		}
+		.pinlogin .pinlogin-field {
+			box-sizing: border-box;
+			
+			display: inline-block;
+			
+			width: 45px;
+			height: 45px;
+			
+			padding: 5px;
+			
+			margin: 0 10px;
+			
+			border: 1px solid #ddd;
+			
+			-webkit-border-radius: 45px;
+			-moz-border-radius: 45px;	
+			border-radius: 45px;
+			
+			text-align: center;
+			
+			font-family: Arial;
+			font-size: 13pt;
+			font-weight: bold;
+			color: #12cbc5;
+			
+			outline:none;
+			
+			-webkit-box-shadow: inset 1px 1px 2px 0px rgba(0,0,0,.1);		
+			-moz-box-shadow: inset 1px 1px 2px 0px rgba(0,0,0,.1);	
+			box-shadow: inset 1px 1px 2px 0px rgba(0,0,0,.1);	
+
+			background: #fff;
+			
+			transition: all .5s;
+
+		}
+
+		.pinlogin .pinlogin-field:first-of-type {
+			margin-left: 0;
+		}
+
+		.pinlogin .pinlogin-field:last-of-type {
+			margin-right: 0;
+		}
+
+		.pinlogin .pinlogin-field:focus {
+			border-color: rgba(0,174,255,1);
+			-webkit-box-shadow: 0px 0px 5px 0px #12cbc5;
+			-moz-box-shadow: 0px 0px 5px 0px #12cbc5;
+			box-shadow: 0px 0px 5px 0px #12cbc5;
+		}
+
+		.pinlogin .pinlogin-field:read-only
+		{
+			border-color:#ddd ;
+			color:#aaa;
+			background:#f5f5f5;
+			cursor:default;
+			
+			-webkit-box-shadow: none;
+			-moz-box-shadow: none;
+			box-shadow: none;	
+		}
+		
+		.mpanel__login-footer{
+			padding-top: 80px;
+		}
+		
+		.mpanel__login-footer a{
+			font-size: 12px;
+			font-weight: 500;
+			text-transform: uppercase;
+			cursor: pointer;
+			border: none;
+			outline: none;
+			color: #1a1a1a;
+			text-decoration: none;
+			position: relative;
+			z-index: 1;
+			display: inline-block;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			position: relative;
+			background: transparent;
+		}
+		
+		.mpanel__login-footer a:after {
+			content: '';
+			display: block;
+			width: 0;
+			height: 2px;
+			position: absolute;
+			bottom: -3px;
+			left: 50%;
+			-webkit-transform: translateX(-50%);
+			transform: translateX(-50%);
+			-webkit-transition: width .3s;
+			transition: width .3s;
+		}
+		.mpanel__login-footer a:hover:after{
+			width: 100%;
+			background-color: #1a1a1a;
+		}
+		
+		.mpanel__login-loader-element{
+			width: 50px;
+			height: 50px;
+			border-radius: 100%;
+			position: relative;
+		}
+		
+		.mpanel__login-loader-element:before, .mpanel__login-loader-element:after{
+			content: "";
+			position: absolute;
+			top: -10px;
+			left: -10px;
+			width: 100%;
+			height: 100%;
+			border-radius: 100%;
+			border: 10px solid transparent;
+			border-top-color: #12cbc5;
+		}
+		
+		.mpanel__login-loader-element:before{
+			z-index: 100;
+			animation: spin 1s infinite;
+		}
+		
+		.mpanel__login-loader-element:after {
+			border: 10px solid #edeef0;
+		}
+		
+		.mpanel__list{
+			padding: 30px;
+			background-color: #edeef0;
+			width: 100%;
+			min-height: 100%;
+		}
+		
+		.mpanel__list-content{
+			max-width: 400px;
+			margin: 0 auto;
+		}
+		
+		.mpanel__list-item{
+			padding: 30px;
+			border-radius: 4px;
+			box-shadow: 0 1px 0 0 #d3d9de, 0 0 0 1px #e7e8ec;
+			background-color: #ffffff;
+		}
+		.mpanel__list-item:not(:last-child){
+			margin-bottom: 15px;
+		}
+		.mpanel__list-item-row{
+			font-size: 16px;
+		}
+		.mpanel__list-item-row:not(:last-child){
+			margin-bottom: 8px;
+		}
+		.mpanel__list-item-date{
+		    color: #939393;
+			font-size: 14px;
+		}
+		.mpanel__list-item-url{
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+		.mpanel__list-item-url span{
+			color: #939393;
+			font-size: 14px;
+			border-bottom: 1px dotted #939393;
 		}
 		</style>
 	</head>
 	<body>
 		<div class="mpanel__login">
 			<div class="mpanel__login-content">
-				<div class="mpanel__login-logo">
-					<a href="/">
-						<svg viewBox="0 0 389 81" class=""><use xlink:href="/assets/sprite.svg#logo"></use></svg>
-					</a>
+				<div class="mpanel__login-form">
+					<div class="mpanel__login-logo">
+						<a href="/">
+							<svg viewBox="0 0 389 81" class=""><use xlink:href="/assets/sprite.svg#logo"></use></svg>
+						</a>
+					</div>
+					<div class="mpanel__login-header">
+						<div class="mpanel__login-title">Авторизация</div>
+						<div class="mpanel__login-subtitle">Пожалуйста, введите свой код доступа</div>
+					</div>
+					<div class="mpanel__login-pin">
+						<div class="mpanel__login-pin-code"></div>
+					</div>
+					
+					<div class="mpanel__login-footer">
+						<a href="/">Возвратиться на сайт</a>
+					</div>
 				</div>
-				<div class="mpanel__login-header">
-					<div class="mpanel__login-title">Авторизация</div>
-					<div class="mpanel__login-subtitle">Пожалуйста, введите свой код доступа</div>
-				</div>
-				<div class="mpanel__login-pin">
-					<div class="mpanel__login-pin-code"></div>
-				</div>
-				
-				<div class="mpanel__login-footer">
-					<a href="/">Возвратиться на сайт</a>
+				<div class="mpanel__login-loader" style="display:none;">
+					<div class="mpanel__login-loader-element"></div>
 				</div>
 			</div>
 		</div>
 		
-		
+		<div class="mpanel__list" style="display:none;">
+			<div class="mpanel__list-content">
+				<div class="mpanel__list-items" style="display:none;">
+				
+				</div>
+				<div class="mpanel__list-no-items" style="display:none;">
+					<p>Пока нет новых заявок.</p>
+				</div>
+			</div>
+		</div>
 		
 		
 		<script>
@@ -512,37 +727,82 @@
   
 	return Pinlogin;
 
-}));
-			
-			var MD5=function(d){d=unescape(encodeURIComponent(d));result=M(V(Y(X(d),8*d.length)));return result.toLowerCase()};function M(d){for(var _,m="0123456789ABCDEF",f="",r=0;r<d.length;r++)_=d.charCodeAt(r),f+=m.charAt(_>>>4&15)+m.charAt(15&_);return f}function X(d){for(var _=Array(d.length>>2),m=0;m<_.length;m++)_[m]=0;for(m=0;m<8*d.length;m+=8)_[m>>5]|=(255&d.charCodeAt(m/8))<<m%32;return _}function V(d){for(var _="",m=0;m<32*d.length;m+=8)_+=String.fromCharCode(d[m>>5]>>>m%32&255);return _}function Y(d,_){d[_>>5]|=128<<_%32,d[14+(_+64>>>9<<4)]=_;for(var m=1732584193,f=-271733879,r=-1732584194,i=271733878,n=0;n<d.length;n+=16){var h=m,t=f,g=r,e=i;f=md5_ii(f=md5_ii(f=md5_ii(f=md5_ii(f=md5_hh(f=md5_hh(f=md5_hh(f=md5_hh(f=md5_gg(f=md5_gg(f=md5_gg(f=md5_gg(f=md5_ff(f=md5_ff(f=md5_ff(f=md5_ff(f,r=md5_ff(r,i=md5_ff(i,m=md5_ff(m,f,r,i,d[n+0],7,-680876936),f,r,d[n+1],12,-389564586),m,f,d[n+2],17,606105819),i,m,d[n+3],22,-1044525330),r=md5_ff(r,i=md5_ff(i,m=md5_ff(m,f,r,i,d[n+4],7,-176418897),f,r,d[n+5],12,1200080426),m,f,d[n+6],17,-1473231341),i,m,d[n+7],22,-45705983),r=md5_ff(r,i=md5_ff(i,m=md5_ff(m,f,r,i,d[n+8],7,1770035416),f,r,d[n+9],12,-1958414417),m,f,d[n+10],17,-42063),i,m,d[n+11],22,-1990404162),r=md5_ff(r,i=md5_ff(i,m=md5_ff(m,f,r,i,d[n+12],7,1804603682),f,r,d[n+13],12,-40341101),m,f,d[n+14],17,-1502002290),i,m,d[n+15],22,1236535329),r=md5_gg(r,i=md5_gg(i,m=md5_gg(m,f,r,i,d[n+1],5,-165796510),f,r,d[n+6],9,-1069501632),m,f,d[n+11],14,643717713),i,m,d[n+0],20,-373897302),r=md5_gg(r,i=md5_gg(i,m=md5_gg(m,f,r,i,d[n+5],5,-701558691),f,r,d[n+10],9,38016083),m,f,d[n+15],14,-660478335),i,m,d[n+4],20,-405537848),r=md5_gg(r,i=md5_gg(i,m=md5_gg(m,f,r,i,d[n+9],5,568446438),f,r,d[n+14],9,-1019803690),m,f,d[n+3],14,-187363961),i,m,d[n+8],20,1163531501),r=md5_gg(r,i=md5_gg(i,m=md5_gg(m,f,r,i,d[n+13],5,-1444681467),f,r,d[n+2],9,-51403784),m,f,d[n+7],14,1735328473),i,m,d[n+12],20,-1926607734),r=md5_hh(r,i=md5_hh(i,m=md5_hh(m,f,r,i,d[n+5],4,-378558),f,r,d[n+8],11,-2022574463),m,f,d[n+11],16,1839030562),i,m,d[n+14],23,-35309556),r=md5_hh(r,i=md5_hh(i,m=md5_hh(m,f,r,i,d[n+1],4,-1530992060),f,r,d[n+4],11,1272893353),m,f,d[n+7],16,-155497632),i,m,d[n+10],23,-1094730640),r=md5_hh(r,i=md5_hh(i,m=md5_hh(m,f,r,i,d[n+13],4,681279174),f,r,d[n+0],11,-358537222),m,f,d[n+3],16,-722521979),i,m,d[n+6],23,76029189),r=md5_hh(r,i=md5_hh(i,m=md5_hh(m,f,r,i,d[n+9],4,-640364487),f,r,d[n+12],11,-421815835),m,f,d[n+15],16,530742520),i,m,d[n+2],23,-995338651),r=md5_ii(r,i=md5_ii(i,m=md5_ii(m,f,r,i,d[n+0],6,-198630844),f,r,d[n+7],10,1126891415),m,f,d[n+14],15,-1416354905),i,m,d[n+5],21,-57434055),r=md5_ii(r,i=md5_ii(i,m=md5_ii(m,f,r,i,d[n+12],6,1700485571),f,r,d[n+3],10,-1894986606),m,f,d[n+10],15,-1051523),i,m,d[n+1],21,-2054922799),r=md5_ii(r,i=md5_ii(i,m=md5_ii(m,f,r,i,d[n+8],6,1873313359),f,r,d[n+15],10,-30611744),m,f,d[n+6],15,-1560198380),i,m,d[n+13],21,1309151649),r=md5_ii(r,i=md5_ii(i,m=md5_ii(m,f,r,i,d[n+4],6,-145523070),f,r,d[n+11],10,-1120210379),m,f,d[n+2],15,718787259),i,m,d[n+9],21,-343485551),m=safe_add(m,h),f=safe_add(f,t),r=safe_add(r,g),i=safe_add(i,e)}return Array(m,f,r,i)}function md5_cmn(d,_,m,f,r,i){return safe_add(bit_rol(safe_add(safe_add(_,d),safe_add(f,i)),r),m)}function md5_ff(d,_,m,f,r,i,n){return md5_cmn(_&m|~_&f,d,_,r,i,n)}function md5_gg(d,_,m,f,r,i,n){return md5_cmn(_&f|m&~f,d,_,r,i,n)}function md5_hh(d,_,m,f,r,i,n){return md5_cmn(_^m^f,d,_,r,i,n)}function md5_ii(d,_,m,f,r,i,n){return md5_cmn(m^(_|~f),d,_,r,i,n)}function safe_add(d,_){var m=(65535&d)+(65535&_);return(d>>16)+(_>>16)+(m>>16)<<16|65535&m}function bit_rol(d,_){return d<<_|d>>>32-_}
-			
-			
-			;
-			
-			var loginpin =  new Pinlogin(document.querySelector('.mpanel__login-pin-code'), {
-			
-					fields : 4,
+}));		
+		var __statusFirebase = false;
+		
+		function __initFirebase(){
+			$('.mpanel__login-form').hide();
+			$('.mpanel__login-loader').show();
+			if (!__statusFirebase){
+				$.getScript('/assets/js/firebase.js', function (data, textStatus, jqxhr) {
+					__statusFirebase = true;
 					
-					complete : function(pinCode){
-						if(MD5(pinCode) == 'ca9541826e97c4530b07dda2eba0e013'){
-							alert('ok');
+					var __listContent = $('.mpanel__list-content');
+					var __items = [];
+					firebase.database().ref('feedback').once('value', function(items){
+						items.forEach(function(item){
+							__items.push(item);
+							//itemObject.val();
+							//console.log(item);
+							//$('.mpanel__list-items').append('<div class="">' +item['name']+ '</div>');
+							
+							
+							//console.log(childSnapshot.key);
+							//console.log(childSnapshot.val());
+							//firebase.database().ref('feedback/'+childSnapshot.key).remove();
+						});
+						console.log(__items.length);
+						if(__items.length){
+							var __itemsContent = $('.mpanel__list-items');
+							
+							$.each(__items, function(k, itemObject){
+								var item = itemObject.val();
+								var itemHTML = $('<div/>').addClass('mpanel__list-item');
+								
+								if(item.date !== undefined){
+									itemHTML.append($('<div/>').addClass('mpanel__list-item-row mpanel__list-item-date').html(item.date));
+								}
+								if(item.name !== undefined){
+									itemHTML.append($('<div/>').addClass('mpanel__list-item-row').html(item.name));
+								}
+								if(item.phone !== undefined){
+									itemHTML.append($('<div/>').addClass('mpanel__list-item-row').html(item.phone));
+								}
+								if(item.url !== undefined){
+									itemHTML.append($('<div/>').addClass('mpanel__list-item-row mpanel__list-item-url').html($('<span/>').html(item.url)));
+								}
+								__itemsContent.append(itemHTML);
+							});
+							
+							__itemsContent.show();
 						}
-					},	
-				});
-			
-			
-			$(function(){
-				$.getScript('/assets/js/firebase.js', function(data, textStatus, jqxhr){
-				firebase.database().ref('feedback').once('value',   function(snapshot) {
-					snapshot.forEach(function(childSnapshot) {
-					
-					console.log(childSnapshot.key);
-					console.log(childSnapshot.val());
-					firebase.database().ref('feedback/'+childSnapshot.key).remove();
+						
+						else{
+							$('.mpanel__list-no-items').show();
+						}
+						
+						$('.mpanel__login').hide();
+						$('.mpanel__list').show();
 					});
-				  });
 				});
+			}
+		}
+		
+		$(function(){
+			
+			var MD5=function(d){d=unescape(encodeURIComponent(d));result=M(V(Y(X(d),8*d.length)));return result.toLowerCase()};function M(d){for(var _,m="0123456789ABCDEF",f="",r=0;r<d.length;r++)_=d.charCodeAt(r),f+=m.charAt(_>>>4&15)+m.charAt(15&_);return f}function X(d){for(var _=Array(d.length>>2),m=0;m<_.length;m++)_[m]=0;for(m=0;m<8*d.length;m+=8)_[m>>5]|=(255&d.charCodeAt(m/8))<<m%32;return _}function V(d){for(var _="",m=0;m<32*d.length;m+=8)_+=String.fromCharCode(d[m>>5]>>>m%32&255);return _}function Y(d,_){d[_>>5]|=128<<_%32,d[14+(_+64>>>9<<4)]=_;for(var m=1732584193,f=-271733879,r=-1732584194,i=271733878,n=0;n<d.length;n+=16){var h=m,t=f,g=r,e=i;f=md5_ii(f=md5_ii(f=md5_ii(f=md5_ii(f=md5_hh(f=md5_hh(f=md5_hh(f=md5_hh(f=md5_gg(f=md5_gg(f=md5_gg(f=md5_gg(f=md5_ff(f=md5_ff(f=md5_ff(f=md5_ff(f,r=md5_ff(r,i=md5_ff(i,m=md5_ff(m,f,r,i,d[n+0],7,-680876936),f,r,d[n+1],12,-389564586),m,f,d[n+2],17,606105819),i,m,d[n+3],22,-1044525330),r=md5_ff(r,i=md5_ff(i,m=md5_ff(m,f,r,i,d[n+4],7,-176418897),f,r,d[n+5],12,1200080426),m,f,d[n+6],17,-1473231341),i,m,d[n+7],22,-45705983),r=md5_ff(r,i=md5_ff(i,m=md5_ff(m,f,r,i,d[n+8],7,1770035416),f,r,d[n+9],12,-1958414417),m,f,d[n+10],17,-42063),i,m,d[n+11],22,-1990404162),r=md5_ff(r,i=md5_ff(i,m=md5_ff(m,f,r,i,d[n+12],7,1804603682),f,r,d[n+13],12,-40341101),m,f,d[n+14],17,-1502002290),i,m,d[n+15],22,1236535329),r=md5_gg(r,i=md5_gg(i,m=md5_gg(m,f,r,i,d[n+1],5,-165796510),f,r,d[n+6],9,-1069501632),m,f,d[n+11],14,643717713),i,m,d[n+0],20,-373897302),r=md5_gg(r,i=md5_gg(i,m=md5_gg(m,f,r,i,d[n+5],5,-701558691),f,r,d[n+10],9,38016083),m,f,d[n+15],14,-660478335),i,m,d[n+4],20,-405537848),r=md5_gg(r,i=md5_gg(i,m=md5_gg(m,f,r,i,d[n+9],5,568446438),f,r,d[n+14],9,-1019803690),m,f,d[n+3],14,-187363961),i,m,d[n+8],20,1163531501),r=md5_gg(r,i=md5_gg(i,m=md5_gg(m,f,r,i,d[n+13],5,-1444681467),f,r,d[n+2],9,-51403784),m,f,d[n+7],14,1735328473),i,m,d[n+12],20,-1926607734),r=md5_hh(r,i=md5_hh(i,m=md5_hh(m,f,r,i,d[n+5],4,-378558),f,r,d[n+8],11,-2022574463),m,f,d[n+11],16,1839030562),i,m,d[n+14],23,-35309556),r=md5_hh(r,i=md5_hh(i,m=md5_hh(m,f,r,i,d[n+1],4,-1530992060),f,r,d[n+4],11,1272893353),m,f,d[n+7],16,-155497632),i,m,d[n+10],23,-1094730640),r=md5_hh(r,i=md5_hh(i,m=md5_hh(m,f,r,i,d[n+13],4,681279174),f,r,d[n+0],11,-358537222),m,f,d[n+3],16,-722521979),i,m,d[n+6],23,76029189),r=md5_hh(r,i=md5_hh(i,m=md5_hh(m,f,r,i,d[n+9],4,-640364487),f,r,d[n+12],11,-421815835),m,f,d[n+15],16,530742520),i,m,d[n+2],23,-995338651),r=md5_ii(r,i=md5_ii(i,m=md5_ii(m,f,r,i,d[n+0],6,-198630844),f,r,d[n+7],10,1126891415),m,f,d[n+14],15,-1416354905),i,m,d[n+5],21,-57434055),r=md5_ii(r,i=md5_ii(i,m=md5_ii(m,f,r,i,d[n+12],6,1700485571),f,r,d[n+3],10,-1894986606),m,f,d[n+10],15,-1051523),i,m,d[n+1],21,-2054922799),r=md5_ii(r,i=md5_ii(i,m=md5_ii(m,f,r,i,d[n+8],6,1873313359),f,r,d[n+15],10,-30611744),m,f,d[n+6],15,-1560198380),i,m,d[n+13],21,1309151649),r=md5_ii(r,i=md5_ii(i,m=md5_ii(m,f,r,i,d[n+4],6,-145523070),f,r,d[n+11],10,-1120210379),m,f,d[n+2],15,718787259),i,m,d[n+9],21,-343485551),m=safe_add(m,h),f=safe_add(f,t),r=safe_add(r,g),i=safe_add(i,e)}return Array(m,f,r,i)}function md5_cmn(d,_,m,f,r,i){return safe_add(bit_rol(safe_add(safe_add(_,d),safe_add(f,i)),r),m)}function md5_ff(d,_,m,f,r,i,n){return md5_cmn(_&m|~_&f,d,_,r,i,n)}function md5_gg(d,_,m,f,r,i,n){return md5_cmn(_&f|m&~f,d,_,r,i,n)}function md5_hh(d,_,m,f,r,i,n){return md5_cmn(_^m^f,d,_,r,i,n)}function md5_ii(d,_,m,f,r,i,n){return md5_cmn(m^(_|~f),d,_,r,i,n)}function safe_add(d,_){var m=(65535&d)+(65535&_);return(d>>16)+(_>>16)+(m>>16)<<16|65535&m}function bit_rol(d,_){return d<<_|d>>>32-_};
+			
+			var loginpin =  new Pinlogin(document.querySelector('.mpanel__login-pin-code'),{
+		
+				fields : 4,
+				
+				complete : function(pinCode){
+					if(MD5(pinCode) == 'ca9541826e97c4530b07dda2eba0e013'){
+						__initFirebase();
+					}
+				},	
 			});
+		});
 		</script>
 	</body>
 </html>
