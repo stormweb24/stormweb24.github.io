@@ -359,6 +359,7 @@
 			var __statusFirebase = false;
 			
 			function __initFirebase(){
+				$('.mpanel__login-pin-code input:focus').blur();
 				$('.mpanel__login-form').remove();
 				$('.mpanel__login-loader').show();
 				if (!__statusFirebase){
@@ -379,7 +380,6 @@
 								//console.log(childSnapshot.val());
 								//firebase.database().ref('feedback/'+childSnapshot.key).remove();
 							});
-							console.log(__items.length);
 							if(__items.length){
 								var __itemsContent = $('.mpanel__list-items');
 								
